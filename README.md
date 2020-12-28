@@ -5,7 +5,7 @@ I have used the password strength scoring which is inspired by https://stackover
 
 ## Install in your project
 
-`npm install --save react-password-strength`
+`npm install --save @koundinyagoparaju/react-password-strength`
 
 _Note: react/react-dom is a peer dependency. You should be using this in a React project._
 

@@ -1,4 +1,4 @@
-# React Password Strength ![build status](https://codeship.com/projects/0fd512b0-c9f6-0134-86e7-125925b29f4b/status?branch=master)
+# React Password Strength
 
 This is a fork of https://github.com/mmw/react-password-strength.
 I have used the password strength scoring which is inspired by https://stackoverflow.com/a/11268104 inorder to reduce the size of the dependency.

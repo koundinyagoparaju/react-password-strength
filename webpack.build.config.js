@@ -12,8 +12,9 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         include: /src/,
-        query: {
-          presets: ['react', 'es2015', 'stage-2'],
+        options: {
+          presets: ['@babel/preset-react', '@babel/preset-env'],
+          plugins: ['@babel/plugin-proposal-class-properties']
         },
       }, {
         test: /\.css$/,

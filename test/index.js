@@ -69,11 +69,11 @@ describe('ReactPasswordStrength Events', () => {
     const scoreDesc = findRenderedDOMComponentWithClass(result, 'ReactPasswordStrength-strength-desc');
     let input = findRenderedDOMComponentWithClass(result, 'ReactPasswordStrength-input');
 
-    input.value = 'abcd1234ABCDxymv123';
+    input.value = 'abcd1234ABCDxymv123!';
 
     Simulate.change(input);
 
-    expect(result.state.password).toBe('abcd1234ABCDxymv123');
+    expect(result.state.password).toBe('abcd1234ABCDxymv123!');
     expect(result.state.score).toBe(4);
     expect(result.state.isValid).toBe(true);
 
@@ -93,18 +93,18 @@ describe('ReactPasswordStrength Events', () => {
       score: 0,
       isValid: false,
       password: '123',
-    }, null);
+    });
   });
 
   it('reset state on clear', () => {
     const result = renderIntoDocument(<PassStrength />);
     let input = findRenderedDOMComponentWithClass(result, 'ReactPasswordStrength-input');
 
-    input.value = 'abcd1234ABCDxymv123';
+    input.value = 'abcd1234ABCDxymv123!';
 
     Simulate.change(input);
 
-    expect(result.state.password).toBe('abcd1234ABCDxymv123');
+    expect(result.state.password).toBe('abcd1234ABCDxymv123!');
     expect(result.state.score).toBe(4);
     expect(result.state.isValid).toBe(true);
 
@@ -139,20 +139,6 @@ describe('ReactPasswordStrength Events', () => {
     Simulate.change(input);
 
     expect(result.state.password).toBe('~=0o%');
-    expect(result.state.score).toBe(0);
-    expect(result.state.isValid).toBe(false);
-  })
-
-  it('adds strings in userInputs to zxcvbn dictionary', () => {
-    const knownKeyword = 'longwordthatiscommon';
-    const result = renderIntoDocument(<PassStrength minScore={2} userInputs={[knownKeyword]} />);
-    let input = findRenderedDOMComponentWithClass(result, 'ReactPasswordStrength-input');
-
-    input.value = knownKeyword;
-
-    Simulate.change(input);
-
-    expect(result.state.password).toBe(knownKeyword);
     expect(result.state.score).toBe(0);
     expect(result.state.isValid).toBe(false);
   })

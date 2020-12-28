@@ -1,7 +1,7 @@
 import './style.css';
 
 import React, { Component } from 'react';
-import zxcvbn from 'zxcvbn';
+import scorePassword from './scorePassword';
 import PropTypes from 'prop-types';
 
 const isTooShort = (password, minLength) => password.length < minLength;
@@ -18,7 +18,6 @@ export default class ReactPasswordStrength extends Component {
     scoreWords: PropTypes.array,
     style: PropTypes.object,
     tooShortWord: PropTypes.string,
-    userInputs: PropTypes.array,
   }
 
   static defaultProps = {
@@ -30,7 +29,6 @@ export default class ReactPasswordStrength extends Component {
     namespaceClassName: 'ReactPasswordStrength',
     scoreWords: ['weak', 'weak', 'okay', 'good', 'strong'],
     tooShortWord: 'too short',
-    userInputs: [],
   }
 
   state = {
@@ -64,17 +62,14 @@ export default class ReactPasswordStrength extends Component {
   }
 
   handleChange = () => {
-    const { changeCallback, minScore, userInputs, minLength } = this.props;
+    const { changeCallback, minScore, minLength } = this.props;
     const password = this.reactPasswordStrengthInput.value;
 
     let score = 0;
-    let result = null;
 
     // always sets a zero score when min length requirement is not met
-    // avoids unnecessary zxcvbn computations (CPU intensive)
-    if (isTooShort(password, minLength) === false) {
-      result = zxcvbn(password, userInputs);
-      score = result.score;
+    if (!isTooShort(password, minLength)) {
+      score = scorePassword(password);
     }
 
     this.setState({
@@ -83,7 +78,7 @@ export default class ReactPasswordStrength extends Component {
       score,
     }, () => {
       if (changeCallback !== null) {
-        changeCallback(this.state, result);
+        changeCallback(this.state);
       }
     });
   }

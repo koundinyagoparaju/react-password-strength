@@ -15,6 +15,12 @@ module.exports = function(config) {
       'test/*.js',
     ],
     exclude: [],
+    plugins: [
+      'karma-jasmine',
+      'karma-phantomjs-launcher',
+      'karma-webpack',
+      'karma-spec-reporter'
+    ],
 
     browsers: ['PhantomJS'],
     frameworks: ['jasmine'],
@@ -24,6 +30,7 @@ module.exports = function(config) {
     },
 
     webpack: {
+      mode: 'production',
       entry: './src/index.js',
       module: {
         rules: [
@@ -32,7 +39,8 @@ module.exports = function(config) {
             include: [/src/, /test/],
             loader: 'babel-loader',
             query: {
-              presets: ['react', 'es2015', 'stage-2'],
+              presets: ['@babel/preset-react', '@babel/preset-env'],
+              plugins: ['@babel/plugin-proposal-class-properties']
             },
           }, {
             test: /\.css$/,

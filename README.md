@@ -1,20 +1,13 @@
 # React Password Strength ![build status](https://codeship.com/projects/0fd512b0-c9f6-0134-86e7-125925b29f4b/status?branch=master)
 
-A password strength indicator field using [zxcvbn](https://github.com/dropbox/zxcvbn) to calculate a password strength score.
-
-_Note: zxcvbn is a large library it's recommended you split the codebase to manage bundle size._
-
-[Try it live!](https://reactpasswordstrength.netlify.com)
+This is a fork of https://github.com/mmw/react-password-strength.
+I have used the password strength scoring which is inspired by https://stackoverflow.com/a/11268104 inorder to reduce the size of the dependency.
 
 ## Install in your project
 
 `npm install --save react-password-strength`
 
 _Note: react/react-dom is a peer dependency. You should be using this in a React project._
-
-## Run the example locally
-
-See the [example repo](https://github.com/mmw/react-password-strength-example)
 
 ## Using the tool
 
@@ -73,9 +66,8 @@ Using in a __Universal JS App__ (server-side rendering):
 #### changeCallback
 
 - Callback after input has changed (and score was recomputed)
-- React Password Strength passes two objects to the callback function:
+- React Password Strength passes one object to the callback function:
     - current app state (`score`, `password`, `isValid`)
-    - full result produced by [zxcvbn](https://github.com/dropbox/zxcvbn) including `feedback` (see docs for more properties)
 
 #### inputProps
 
@@ -87,10 +79,6 @@ Using in a __Universal JS App__ (server-side rendering):
 #### defaultValue
 
 - A default value to set for the password field. If a non-empty string is provided the `changeCallback` will be called in `componentDidMount`.
-
-#### userInputs
-
-- An array of strings that zxcvbn will treat as an extra dictionary.
 
 #### namespaceClassName (Default: 'ReactPasswordStrength')
 

@@ -17,12 +17,12 @@ module.exports = function(config) {
     exclude: [],
     plugins: [
       'karma-jasmine',
-      'karma-phantomjs-launcher',
+      'karma-chrome-launcher',
       'karma-webpack',
       'karma-spec-reporter'
     ],
 
-    browsers: ['PhantomJS'],
+    browsers: ['ChromeHeadless'],
     frameworks: ['jasmine'],
     reporters: ['spec'],
     preprocessors: {
@@ -38,7 +38,7 @@ module.exports = function(config) {
             test: /\.js$/,
             include: [/src/, /test/],
             loader: 'babel-loader',
-            query: {
+            options: {
               presets: ['@babel/preset-react', '@babel/preset-env'],
               plugins: ['@babel/plugin-proposal-class-properties']
             },

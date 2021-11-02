@@ -1,6 +1,6 @@
 {
   "name": "@koundinyagoparaju/react-password-strength",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "engines": {
     "node": ">=16.0.0"
   },

@@ -53,7 +53,6 @@ Using in a __Universal JS App__ (server-side rendering):
 
 - Minimum score acceptable for password to be considered valid
 - Scale from 0 - 4 denoting too guessable to very unguessable
-- See [zxcvbn](https://github.com/dropbox/zxcvbn) docs for more detail
 
 #### scoreWords (Default: ['weak', 'weak', 'okay', 'good', 'strong'])
 
